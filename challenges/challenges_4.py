@@ -86,3 +86,5 @@ print(round(profit, 2))
 a = 0.1
 b = 0.3
 print(math.isclose(a * 3, b, abs_tol=0.01))
+
+# Done
