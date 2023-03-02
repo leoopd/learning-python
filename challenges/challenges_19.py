@@ -1,4 +1,4 @@
-# import string
+import string
 # import time
 
 # with open('challenges/files/macs.txt', 'r') as file:
@@ -120,3 +120,77 @@
 # Write a Python script that reads the file in a dictionary. The words in the 
 # file will be the dictionary keys and the length of each word the 
 # corresponding values.
+
+# def dict_maker(path):
+#     with open(path) as f:
+#         content = f.read().splitlines()
+#         result = {key: len(key) for key in content}
+#         return result
+    
+# print(dict_maker('python/challenges/files/dict1.txt'))
+
+# Challenge #10
+# Write a Python script that finds the first 100 longest words in the file.
+
+# def word_finder(path):
+#     '''Finds the 100 largest words in the file specified.'''
+#     tmp = dict_maker(path)
+#     tmp2 = sorted(tmp.items(), key=lambda x:x[1])
+#     result = []
+#     for i in range(-1, -102, -1):
+#         result.append(tmp2[i])
+#     return result
+
+# print(word_finder('python/challenges/files/dict1.txt'))
+
+# Challenge #11
+# Write a Python script that finds the number of occurrences of each letter of 
+# the alphabet in all the words of the dictionary. Make a distinction between 
+# lower and uppercase letters.
+# You want to see how many times 'a', 'A', 'b', 'B', 'c', 'C', 'd' and so on 
+# appear in all the words in the dictionary.
+# Which is the most frequently used letter in English words? But the least 
+# frequently used one?
+
+# def counting_chars(path):
+#     with open(path) as f:
+#         content = f.read()
+#         result_dict = {}
+#         for char in string.ascii_letters:
+#             result_dict[char] = content.count(char)
+#         sorted_result = sorted(result_dict.items(), key=lambda x:x[1])
+#         return sorted_result
+    
+# print(counting_chars('python/challenges/files/dict1.txt'))
+
+# Challenge #12
+# Change the solution from the previous challenge so that the script considers 
+# all letters lowercase (it makes no distinction between lower and uppercase 
+# letters).
+
+# def counting_chars(path):
+#     with open(path) as f:
+#         content = f.read()
+#         result_dict = {}
+#         for char in string.ascii_lowercase:
+#             result_dict[char] = content.lower().count(char)
+#         sorted_result = sorted(result_dict.items(), key=lambda x:x[1])
+#         return sorted_result
+    
+# print(counting_chars('python/challenges/files/dict1.txt'))
+
+# Challenge #13
+# Continue the previous challenge and find the 3 most frequently used letters 
+# in all English Words.
+# You should get: ('e', 67681), ('s', 50872), ('i', 50818)
+
+def counting_chars(path):
+    with open(path) as f:
+        content = f.read()
+        result_dict = {}
+        for char in string.ascii_letters:
+            result_dict[char] = content.count(char)
+        sorted_result = sorted(result_dict.items(), key=lambda x:x[1])
+        return sorted_result[-1], sorted_result[-2], sorted_result[-3]
+    
+print(counting_chars('python/challenges/files/dict1.txt'))
