@@ -11,6 +11,8 @@
 
 import pickle
 import json
+import requests
+import csv
 
 def serialize(obj, dest_path, prot):
     if prot.lower() == 'json':
@@ -42,5 +44,29 @@ def deserialize(source_path, prot):
             new_obj = pickle.load(f)
     return new_obj
 
-print(deserialize('python/challenges/files/serialize_pickle.dat', 'pickle'))
-print(deserialize('python/challenges/files/serialize_json.txt', 'json'))
+# Challenge #3
+# Using requests connect to https://jsonplaceholder.typicode.com/users 
+# and take the JSON encoded string in Python object
+
+response = requests.get('https://jsonplaceholder.typicode.com/users')
+obj = json.loads(response.text)
+
+# Challenge #4
+# The resulting Python object will be a list of dictionaries. Process the 
+# list and extract the following information for each user:
+# Name, City, GPS coordinates in form of (LAT, LNG), Company's name 
+
+res = []
+for user in obj:
+    res.append([user['name'], user['address']['city'], (user['address']['geo']['lat'], user['address']['geo']['lng']), user['company']['name']])
+
+# Challenge #4
+# Write to a CSV File a row for each user. The fields of the CSV file 
+# will be: name, city, GPS coordinates and company's name
+
+with open('python/challenges/files/extracted_users.txt', 'w') as f:
+    writer = csv.writer(f, lineterminator='\n')
+    header = ['name', 'city', 'GPS coordinates', 'company\'s name']
+    writer.writerow(header)
+    for user in res:
+        writer.writerow(user)
