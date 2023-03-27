@@ -12,3 +12,4 @@
 # 24.03.23 - milestone: chapter 33 11/11
 # 25.03.23 - milestone: chapter 34 8/16
 # 26.03.23 - milestone: chapter 34 16/16 & chapter 35 done
+# 27.03.23 - milestone: chapter 36
