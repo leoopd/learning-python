@@ -4,7 +4,7 @@ class Solution:
     def averageValue(self, nums: List[int]) -> int:
         sum, ctr = 0, 0
         for i in range(len(nums)):
-            if nums[i]%2 == 0 and nums[i]%3 == 0:
+            if nums[i]%3 == 0 and nums[i]%2 == 0:
                 sum += nums[i]
                 ctr += 1
         if ctr == 0:
