@@ -1,10 +1,8 @@
-# 2011. Final Value of Variable After Performing Operations
-
 class Solution:
     def finalValueAfterOperations(self, operations: List[str]) -> int:
         x = 0
         for operation in operations:
-            if operation == '++X' or operation == 'X++':
+            if operation[0] == '+' or (operation[0] == 'X' and operation[1] == '+'):
                 x += 1
             else:
                 x -= 1
