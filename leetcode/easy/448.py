@@ -2,9 +2,8 @@
 
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        res = []
-        for i in range(1, n+1):
-            if i not in nums:
-                res.append(i)
+        res = list(range(1, len(nums)+1))
+        for num in nums:
+            if num in res:
+                res.remove(num)
         return res
