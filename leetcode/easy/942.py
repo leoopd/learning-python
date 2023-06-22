@@ -7,7 +7,6 @@ class Solution(object):
         :rtype: List[int]
         """
         ints = list(range(len(s)+1))
-        print(ints)
         perm = []
         for digit in s:
             if len(ints) == 0:
