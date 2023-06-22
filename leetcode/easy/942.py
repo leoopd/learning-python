@@ -9,8 +9,6 @@ class Solution(object):
         ints = list(range(len(s)+1))
         perm = []
         for digit in s:
-            if len(ints) == 0:
-                break
             if digit == 'I':
                 perm.append(ints.pop(0))
             else:
