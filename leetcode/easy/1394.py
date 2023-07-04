@@ -1,16 +1,14 @@
 # 1394. Find Lucky Integer in an Array
 
-class Solution:
-    def findLucky(self, arr: List[int]) -> int:
-        ctr = 1
-        arr.sort()
-        while len(arr) > 0:
-            num = arr.pop(-1)
-            while num in arr:
-                arr.remove(num)
-                ctr += 1
-            if num == ctr:
-                return num
-            else:
-                ctr = 1
+class Solution(object):
+    def findLucky(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        ints = [1,2,3,4,5,6,7,8,9]
+        counts = {x: arr.count(x) for x in arr}
+        for i in range(len(counts)-1, -1, -1):
+            if counts.items()[i][0] == counts.items()[i][1]:
+                return counts.items()[i][0]
         return -1
