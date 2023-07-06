@@ -8,6 +8,6 @@ class Solution(object):
         """
         res = []
         for num in nums:
-            for i in range(len(str(num))):
-                res.append(int(str(num)[i]))
+            res.extend(str(num))
+        res = [int(x) for x in res]
         return res
