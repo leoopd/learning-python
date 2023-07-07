@@ -1,13 +1,9 @@
 # 771. Jewels and Stones
 
-class Solution(object):
-    def numJewelsInStones(self, jewels, stones):
-        """
-        :type jewels: str
-        :type stones: str
-        :rtype: int
-        """
-        sum = 0
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        count = 0
         for jewel in jewels:
-            sum += stones.count(jewel)
-        return sum
+            if jewel in stones:
+                count += stones.count(jewel)
+        return count
