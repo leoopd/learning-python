@@ -2,11 +2,11 @@
 
 class Solution:
     def alternateDigitSum(self, n: int) -> int:
-        digits = list(str(n))
-        sum = 0
-        for i in range(len(digits)):
+        n = str(n)
+        res = 0
+        for i in range(len(n)):
             if i%2 == 0:
-                sum += int(digits[i])
+                res += int(n[i])
             else:
-                sum -= int(digits[i])
-        return sum
+                res -= int(n[i])
+        return res
