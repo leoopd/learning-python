@@ -3,31 +3,28 @@
 class Solution:
     def equalFrequency(self, word: str) -> bool:
         chars = set(list(word))
-        counts = [word.count(x) for x in chars]
-
-        least = counts.index(min(counts))
-        if min(counts) == 1:
-            option_one = counts[:least] + counts[least+1:]
-            print(option_one)
-        else:
-            option_one = counts.copy()
-            option_one[least] -= 1
-
-        if len(option_one) == 1:
-            return True
-
-        for i in range(1, len(option_one)):
-            if option_one[i-1] != option_one[i]:
-                break
-            if i == len(option_one)-1:
-                return True
+        counts = {x: word.count(x) for x in chars}
         
-        most = counts.index(max(counts))
-        option_two = counts.copy()
-        option_two[most] -= 1
-
-        for i in range(1, len(option_two)):
-            if option_two[i-1] != option_two[i]:
-                return False
-            if i == len(option_two)-1:
+        #Sorting the dict by occurrences
+        sorted_counts = dict(sorted(counts.items(), key=lambda x:x[1]))
+        values = list(sorted_counts.values())
+        
+        #Removing one instance of the most occurring letter
+        tmp = values.copy()
+        tmp[-1] -= 1
+        for i in range(1, len(tmp)):
+            if tmp[i-1] != tmp[i]:
+                break
+            if i == len(tmp)-1:
                 return True
+
+        #Removing one instance of the least occurring letter
+        tmp = values.copy()
+        tmp[0] -= 1
+        for i in range(1, len(tmp)):
+            if tmp[i-1] == 0:
+                continue
+            if tmp[i-1] != tmp[i]:
+                return False
+
+        return True
