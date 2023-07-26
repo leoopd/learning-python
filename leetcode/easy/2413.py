@@ -2,6 +2,8 @@
 
 class Solution:
     def smallestEvenMultiple(self, n: int) -> int:
-        for i in range(n, 301):
+        sem = n*2
+        for i in range(2*n, n-1, -1):
             if i%n == 0 and i%2 == 0:
-                return i
+                sem = i
+        return sem
