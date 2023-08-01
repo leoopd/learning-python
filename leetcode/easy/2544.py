@@ -3,9 +3,9 @@
 class Solution:
     def alternateDigitSum(self, n: int) -> int:
         switch = False
-        digits = list(str(n))
+        n = str(n)
         res = 0
-        for digit in digits:
+        for digit in n:
             if switch:
                 res -= int(digit)
                 switch = False
