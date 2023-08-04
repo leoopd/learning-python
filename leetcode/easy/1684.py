@@ -2,6 +2,7 @@
 
 class Solution:
     def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        
         ctr = 0
         for word in words:
             for char in word:
