@@ -2,11 +2,13 @@
 
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
-        ctr = 0
-        i = 0
-        while True:
-            i += 1
-            if i not in arr:
-                ctr += 1
-            if ctr == k:
-                return i
+        ints = 1
+        while k > 0:
+            if k == 1 and ints not in arr:
+                return ints
+            if ints not in arr:
+                ints += 1
+                k -= 1
+            else:
+                ints += 1
+        return ints
