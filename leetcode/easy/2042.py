@@ -2,14 +2,11 @@
 
 class Solution:
     def areNumbersAscending(self, s: str) -> bool:
-        string_list = s.split()
-        int_list = []
-        ints = '0123456789'
-        for e in string_list:
-            if e[0] in ints:
-                int_list.append(int(e))
-        print(int_list)
-        for i in range(1, len(int_list)):
-            if int_list[i-1] >= int_list[i]:
-                return False
+        string_list = s.split(" ")
+        last_int = 0
+        for string in string_list:
+            if string.isdigit():
+                if int(string) <= last_int:
+                    return False
+                last_int = int(string)
         return True
